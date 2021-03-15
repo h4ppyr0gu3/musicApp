@@ -1,0 +1,10 @@
+h1 search
+
+form id="search_form"
+	= label_tag :search
+	= text_field_tag :query, {}, autofocus: true
+	= button_tag :search, type: "submit", class: "button", id: "search_button"
+
+ul#load_json
+
+= javascript_pack_tag 'youtube_results'
