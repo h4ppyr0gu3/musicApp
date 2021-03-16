@@ -150,6 +150,7 @@ GEM
       time
       uri
     orm_adapter (0.5.0)
+    pg (1.2.3)
     public_suffix (4.0.6)
     puma (5.2.2)
       nio4r (~> 2.0)
@@ -231,7 +232,6 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sqlite3 (1.4.2)
     stringio (3.0.0)
     temple (0.8.2)
     thor (1.1.0)
@@ -289,6 +289,7 @@ DEPENDENCIES
   mechanize
   nokogiri
   open-uri
+  pg
   puma (~> 5.0)
   rails (~> 6.1.2, >= 6.1.2.1)
   rails-ujs
@@ -299,7 +300,6 @@ DEPENDENCIES
   sidekiq
   slim
   spring
-  sqlite3 (~> 1.4)
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 4.1.0)
