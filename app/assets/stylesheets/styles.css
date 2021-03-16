@@ -1,0 +1,7 @@
+.image_first_background {
+  background-image: url('music.jpg'), url('mixer.jpg');
+}
+
+.card {
+    height: 100%;
+}

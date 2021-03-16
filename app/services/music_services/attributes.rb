@@ -7,36 +7,46 @@ module MusicServices
 		class << self
 
 			def execute!
-				super_search("Jack Harlow")
+				super_search("Jack Harlow Jack sadza pussy nuggets")
 			end
 
 			def super_search title
 				spill = title.split(" ")
-				puts spill.count
 				search_results = nil
-				artist = 0
-				spill.each do |t|
-					possible = t.capitalize
-					search_results = record_search(possible)
-					if !search_results.nil?
-						artist = t.capitalize
-						break
+				artist = ""
+				tab = spill.count - 1
+				# catch :search_results do
+				# if search_results.nil?
+				for i in 1..tab
+					array = spill.each_cons(i).to_a
+					pp array[0]
+					ref = array.length
+					for j in 0..(ref - 1)
+						query = array[j].join(" ")
+						search_results = record_search(query)
+						if !search_results.nil?
+							return search_results
+							# 	throw :search_results
+						end
 					end
 				end
-				puts "something"
-				# search_results = 0
+
+				
+						# scrape wiki
+
+					# end
+				# end
+
+
 				search_results
-				puts search_results
-				puts !search_results.nil?
-				puts artist
 			end
 
 			def record_search phrase
 				prelim = Artist.find_by(name: "#{phrase}")
 				if prelim != nil
 					artist = prelim.id
-					else
-						return nil
+				else
+					return nil
 				end
 			end
 
@@ -52,7 +62,7 @@ module MusicServices
 					return nil
 				end
 
-				genre = 0
+				genre = ""
 
 				table.css('tr').each do |s|
 					puts s.text

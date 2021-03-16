@@ -67,6 +67,8 @@ GEM
     bootsnap (1.7.2)
       msgpack (~> 1.0)
     builder (3.2.4)
+    bulma-rails (0.9.1)
+      sassc (~> 2.0)
     byebug (11.1.3)
     capybara (3.35.3)
       addressable
@@ -97,7 +99,6 @@ GEM
       dotenv (= 2.7.6)
       railties (>= 3.2)
     erubi (1.10.0)
-    fakeweb (1.3.0)
     ffi (1.14.2)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -194,6 +195,7 @@ GEM
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    redis (4.2.5)
     regexp_parser (2.1.1)
     responders (3.0.1)
       actionpack (>= 5.0)
@@ -214,6 +216,10 @@ GEM
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
     semantic_range (2.3.1)
+    sidekiq (6.2.0)
+      connection_pool (>= 2.2.2)
+      rack (~> 2.0)
+      redis (>= 4.2.0)
     slim (4.1.0)
       temple (>= 0.7.6, < 0.9)
       tilt (>= 2.0.6, < 2.1)
@@ -241,10 +247,6 @@ GEM
       unf_ext
     unf_ext (0.0.7.7)
     uri (0.10.1)
-    vcr (6.0.0)
-    vcr_cable (1.0.0)
-      rails
-      vcr
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.1.0)
@@ -275,12 +277,12 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap (>= 1.4.4)
+  bulma-rails
   byebug
   capybara
   capybara-webkit
   devise
   dotenv-rails
-  fakeweb
   id3tag
   jbuilder (~> 2.7)
   listen (~> 3.3)
@@ -294,12 +296,12 @@ DEPENDENCIES
   rexml
   sass-rails (>= 6)
   selenium-webdriver
+  sidekiq
   slim
   spring
   sqlite3 (~> 1.4)
   turbolinks (~> 5)
   tzinfo-data
-  vcr_cable
   web-console (>= 4.1.0)
   webdrivers
   webpacker (~> 5.0)

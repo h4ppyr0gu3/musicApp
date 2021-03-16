@@ -37,7 +37,12 @@ function post_response(query) {
 
 function create_element(data) {
 	console.log(data);
+  var column = document.createElement("div");
   var element = document.createElement("div");
+  var header = document.createElement("div");
+  var card_image = document.createElement("div");
+  var card_content = document.createElement("div");
+  var card_footer = document.createElement("div");
   var image = document.createElement("img");
   var title = document.createElement("h1");
   var description = document.createElement("p");
@@ -45,25 +50,42 @@ function create_element(data) {
   var video = document.createElement("input");
   var download = document.createElement("input");
 
-  // form.action = "";
+  column.classList.add(["column"], ["is-4"]);
+  element.classList.add(["card"], ["p-5"], ["mx-5"]);
+  header.classList.add(["card-header"]);
+  download.classList.add(["button"]);
+  card_image.classList.add(["card-image"], ["is-centered-middle"]);
+  card_content.classList.add(["card-content"]);
+  card_footer.classList.add(["card-footer"], ["is-centered-middle"]);
+
+  form.action = "songs";
+  form.method = "POST";
+  // form.method = POST;
   video.type = "hidden";
+  video.name = "video";
+  video.id = "video";
   video.value = data["id"]["videoId"];
   // download.textContent = "download";
   download.value = "Download";
   download.type = "submit";
   title.textContent = data["snippet"]["title"];
-  description.textContent = data["snippet"]["description"];
+  // description.textContent = data["snippet"]["description"];
   image.src = data["snippet"]["thumbnails"]["default"]["url"];
 
-  element.appendChild(title);
-  element.appendChild(image);
-  element.appendChild(description);
-  element.appendChild(form);
+  column.appendChild(element);
+  element.appendChild(header);
+  header.appendChild(title);
+  element.appendChild(card_image);
+  card_image.appendChild(image);
+  element.appendChild(card_content);
+  card_content.appendChild(description);
+  element.appendChild(card_footer);
+  card_footer.appendChild(form);
   form.appendChild(video);
   form.appendChild(download);
 
 
-	return element;
+	return column;
 }
 
 async function postData(url = '', data = {}) {

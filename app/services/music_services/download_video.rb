@@ -12,9 +12,13 @@ module MusicServices
 			end
 
 			def download_video_to_tmp videoUrl
+				videoUrl = "https://www.youtube.com/watch?v="  + videoUrl
 				youtube = Rails.root.join("lib/youtube.sh").to_s
-				sadza = %x{sh #{youtube} #{videoUrl}}
-				sadza
+				title = %x{sh #{youtube} #{videoUrl}}
+				newtitle = title.split("-")
+				newtitle.delete_at(-1)
+				fulltitle = newtitle.join("-") + ".mp3"
+				fulltitle
 			end
 
 			def push_to_active_storage filename

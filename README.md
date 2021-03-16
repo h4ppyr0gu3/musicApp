@@ -17,3 +17,8 @@ The first release of this webapp will only change the header tags and album art 
 * Implementing Devise properly
 * Recording Users playlists and songs 
 * Implementing Related random shuffles and a suggested feed 
+* streaming service
+* Progressive web app that caches music
+* add workers 
+* add trimming tool to remove unnecesary noise
+* add analytics

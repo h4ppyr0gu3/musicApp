@@ -1,10 +1,13 @@
-h1 search
+section.hero.image_first_background.is-fullheight
 
-form id="search_form"
-	= label_tag :search
-	= text_field_tag :query, {}, autofocus: true
-	= button_tag :search, type: "submit", class: "button", id: "search_button"
-
-ul#load_json
+	.is-size-2.has-text-centered.has-text-white Search
+	.columns
+		.column.is-6.is-offset-3
+			form (id="search_form" class="has-text-white")
+				= label_tag :"enter a youtube URL or search"
+				= text_field_tag :query, {}, autofocus: true, class: "input"
+				.is-centered-middle 
+					= button_tag :Search, type: "submit", class: "button m-2", id: "search_button"
+	.columns.is-multiline#load_json
 
 = javascript_pack_tag 'youtube_results'

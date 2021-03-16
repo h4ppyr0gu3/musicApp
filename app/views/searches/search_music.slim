@@ -1,9 +1,0 @@
-script src="https://apis.google.com/js/api.js"
-
-h1 search
-= form_with url: searches_path do |f|
-	= f.label :search
-	= f.text_field :search
-	= f.submit :search, class: "button", id: "search_button"
-
-/= javascript_pack_tag 'youtube_api'
