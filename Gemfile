@@ -30,8 +30,6 @@ gem 'id3tag'
 
 gem 'nokogiri'
 
-gem 'mechanize'
-
 gem 'open-uri'
 
 gem 'slim'
@@ -39,7 +37,6 @@ gem 'slim'
 gem 'dotenv-rails'
 
 gem 'rexml'
-gem "capybara-webkit"
 
 gem 'rails-ujs'
 
