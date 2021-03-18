@@ -7,13 +7,5 @@ section.hero.image_first_background.is-fullheight
 		.column.is-6.is-offset-3
 			.has-text-centered.is-size-4.has-text-white Try out our sample
 			.is-centered-middle 
-				= audio_tag url_for(Song.last.music_file), controls: true, preload: "none", class: "m-5"
-
-
-
 				
-			/ .message sadzanuggies
-
-	
-	= link_to "Search songs", search_results_path, class: "has-text-white"
-	= link_to "Download", url_for(Song.last.music_file), class: "has-text-white"
+				= link_to "Search songs", search_results_path, class: "has-text-white"
