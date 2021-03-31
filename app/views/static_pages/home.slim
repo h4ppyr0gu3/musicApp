@@ -1,4 +1,6 @@
-section.hero.image_first_background.is-fullheight
+/= javascript_pack_tag 'HelloWorld'
+
+.container
 
 	.is-size-2.has-text-centered.has-text-white Welcome to the musicApp!
 	/ .message sadza
@@ -7,5 +9,19 @@ section.hero.image_first_background.is-fullheight
 		.column.is-6.is-offset-3
 			.has-text-centered.is-size-4.has-text-white Try out our sample
 			.is-centered-middle 
-				
+				/ = audio_tag url_for(Song.last.music_file), controls: true, preload: "none", class: "m-5"	
+				/ = link_to "Download", url_for(Song.last.music_file), class: "has-text-white"
 				= link_to "Search songs", search_results_path, class: "has-text-white"
+				= link_to "All songs"
+	/ .is-size-2.has-text-centered.has-text-white Search
+	/ .columns
+	/ 	.column.is-6.is-offset-3
+	/ 		form (id="search_form" class="has-text-white")
+	/ 			= label_tag :"enter a youtube URL or search"
+	/ 			= text_field_tag :query, {}, autofocus: true, class: "input"
+	/ 			.is-centered-middle 
+	/ 				= button_tag :Search, type: "submit", class: "button m-2", id: "search_button"
+.app#root
+
+/= react_component("HelloWorld")
+= javascript_pack_tag 'homepage'

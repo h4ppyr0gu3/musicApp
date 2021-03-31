@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>MusicApp</title>
+    <%= favicon_link_tag asset_path('favicon1.png') %>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,9 +12,13 @@
   </head>
 
   <body>
-    <%= render "layouts/header" %>
-    <%= yield %>
-    <%= render "layouts/footer" %>
+    <div class="body">
+      <%= render "layouts/header" %>
+      <div id="content-wrap">
+        <%= yield %>
+      </div>
+      <%= render "layouts/footer" %>
+    </div>
 
   </body>
 </html>

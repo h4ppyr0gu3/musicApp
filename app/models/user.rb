@@ -1,5 +1,7 @@
 class User < ApplicationRecord
 
+	has_many :tracks
+
 	
 	
   # Include default devise modules. Others available are:

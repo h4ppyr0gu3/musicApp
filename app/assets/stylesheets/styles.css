@@ -1,7 +1,33 @@
 .image_first_background {
-  background-image: url('music.jpg'), url('mixer.jpg');
+  background-image: url('./../images/music.jpg'), url('./../images/mixer.jpg');
 }
 
 .card {
     height: 100%;
 }
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+
+.body {
+  height: 100%;
+  position: relative;
+  min-height: 100vh;
+}
+
+#content-wrap {
+  padding-bottom: 10rem;    /* Footer height */
+}
+
+#footer {
+	margin-top: 2.5rem; 
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+}
+

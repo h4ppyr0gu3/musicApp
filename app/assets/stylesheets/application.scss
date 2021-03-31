@@ -6,3 +6,13 @@
 @import "./flexbox";
 
 @import "styles";
+
+.container {
+	@include touch {
+		padding: 10px;
+	}
+}
+
+.box {
+	width: 100%;
+}

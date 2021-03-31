@@ -48,6 +48,10 @@ function create_element(data) {
   var description = document.createElement("p");
   var form = document.createElement("form");
   var video = document.createElement("input");
+  var video_title = document.createElement("input");  
+  var play_form = document.createElement("form");
+  var video_title = document.createElement("input");
+  var play = document.createElement("input");
   var download = document.createElement("input");
 
   column.classList.add(["column"], ["is-4"]);
@@ -64,7 +68,11 @@ function create_element(data) {
   video.type = "hidden";
   video.name = "video";
   video.id = "video";
+  video_title.type = "hidden";
+  video_title.name = "video_title";
+  video_title.id = "video_title";
   video.value = data["id"]["videoId"];
+  video_title.value = data["snippet"]["title"];
   // download.textContent = "download";
   download.value = "Download";
   download.type = "submit";
@@ -82,6 +90,7 @@ function create_element(data) {
   element.appendChild(card_footer);
   card_footer.appendChild(form);
   form.appendChild(video);
+  form.appendChild(video_title);
   form.appendChild(download);
 
 
@@ -103,3 +112,4 @@ async function postData(url = '', data = {}) {
   });
   return response.json();
 }
+// "https://noembed.com/embed?url=https://www.youtube.com/watch?v="
