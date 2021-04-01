@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import postData from './comms';
 
 class Download extends React.Component {
 
@@ -7,17 +8,31 @@ class Download extends React.Component {
 		super(props);
 	}
 
+	handleClick = (e) => {
+		console.log(this.props);
+		console.log(this.props.thumbnailUrl);
+		var data = {};
+		data = {"video": this.props.videoUrl.toString(),
+						"thumbnail": this.props.thumbnailUrl.toString()};
+		postData("/songs", data)
+		.then(data => {console.log(data)});
+	}
+
 	render() {
 		return(
-			<form action="songs" method="POST">
-				<input type="text" className="input" id="title" name="title" placeholder="title"></input>
-				<input type="text" className="input" id="artist" name="artist" placeholder="artist"></input>
-				<input type="text" className="input" id="featured_artist" name="featured_artist" placeholder="featured artist"></input>
-				<input type="text" className="input" id="album" name="album" placeholder="album"></input>
-				<input type="hidden" value={this.props.videoUrl} name="videoUrl" id="videoUrl"></input>
-				<input type="hidden" value={this.props.thumbnailUrl} name="thumbnailUrl" id="thumbnailUrl"></input>
-				<input type="submit" value="submit" className="button"></input>
-			</form>
+			<div>
+				<div className="columns">
+					<div className="column">
+						<p className="is-centered-middle"> Are you sure you want to download this song?</p>
+						<p className="is-centered-middle"> The file will be downloaded and you will be informed when it is done</p>
+					</div>
+				</div>
+				<div className="columns">
+					<div className="column is-centered-middle">
+						<button type="button" value="Download" className="button is-centered-middle" onClick={this.handleClick}>Download</button>
+					</div>
+				</div>
+			</div>
 		)
 	}
 }

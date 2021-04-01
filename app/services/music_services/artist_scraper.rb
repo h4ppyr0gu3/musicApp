@@ -4,7 +4,7 @@ require 'nokogiri'
 # returns {artist: "artist name", "artist 2", featured_artist: "artist name", song_name: "songname (remix) untouched", genres: "list", "of", "genres" }
 
 module MusicServices 
-	class Attributes
+	class ArtistScraper
 		class << self
 
 			Debug = "-----------------------------------------------------------------------------------------------------------------"

@@ -20,13 +20,13 @@ class Results extends React.Component {
     var source = "https://www.youtube.com/embed/" + this.props.videoUrl;
     var video;
     var download;
-    this.state.embed ? video = <Video source={source}/> : video = ''
-    this.state.download_form ? download = <Download thumbnailUrl={this.props.thumbnailUrl} videoUrl={this.props.videoUrl} /> : download = ''
+    this.state.embed ? video = <Video source={source} key={source}/> : video = ''
+    this.state.download_form ? download = <Download thumbnailUrl={this.props.thumbnailUrl} key={this.props.videoUrl} videoUrl={this.props.videoUrl} /> : download = ''
 
 
     return(
 
-      <div className="columns is-centered-middle">
+      <div className="columns is-centered-middle" >
         <div className="column is-8">
           <div className="box py-5 my-5">
             <div className="columns">

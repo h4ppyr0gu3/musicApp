@@ -1,5 +1,15 @@
 class Song < ApplicationRecord
-	has_one_attached :music_file
-	belongs_to :artist
 
+	attr_accessor :video, :thumbnail
+
+	has_one_attached :music_file
+	has_many :artist, required: false
+	has_many :users, through: :tracks
+
+	before_create :checklist
+
+	def checklist
+		puts "AAAAAAAAAAAAAAAAAAAAAAAAAA\n\n\n\n\n"
+		DownloadsWorker.perform_async({video: @video, thumbnail: @thumbnail})
+	end
 end
