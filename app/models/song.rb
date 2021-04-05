@@ -13,6 +13,7 @@ class Song < ApplicationRecord
 	before_save :checklist
 
 	def checklist
+		return if @video.nil? || @thumbnail.nil? || @title.nil?
 		DownloadsWorker.perform_async({
 			video: @video, 
 			thumbnail: @thumbnail, 
