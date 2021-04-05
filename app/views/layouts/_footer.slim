@@ -2,9 +2,13 @@ footer.has-background-black#footer
 	.container
 		.columns.p-2
 			.column
-				= link_to "terms and conditions", conditions_path, class: "has-text-white"
+				= link_to "terms of use", terms_path, class: "has-text-white"
 			.column
-				= link_to "Contact us"
+				= link_to "Contact us", contact_path, class: "has-text-white"
 			.column
 				= link_to "Support docs"
+			.column 
+				= link_to "privacy policy", privacy_path, class: "has-text-white"
+			.column
+				= link_to "copyright claims", copyright_path, class: "has-text-white"
 		.has-text-centered.has-text-white Disclaimer: This application is purely for educational purposes.

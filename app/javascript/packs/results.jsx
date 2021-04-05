@@ -21,7 +21,7 @@ class Results extends React.Component {
     var video;
     var download;
     this.state.embed ? video = <Video source={source} key={source}/> : video = ''
-    this.state.download_form ? download = <Download thumbnailUrl={this.props.thumbnailUrl} key={this.props.videoUrl} videoUrl={this.props.videoUrl} /> : download = ''
+    this.state.download_form ? download = <Download thumbnailUrl={this.props.thumbnailUrl} key={this.props.videoUrl} videoUrl={this.props.videoUrl} name={this.props.name} /> : download = ''
 
 
     return(

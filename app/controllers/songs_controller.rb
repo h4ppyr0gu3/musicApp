@@ -8,7 +8,17 @@ class SongsController < ApplicationController
 	end
 
 	def create
-		Song.create!(video: params[:video], thumbnail: params[:thumbnail])
+		if user_signed_in?
+			user = current_user.id
+		else 
+			user = nil
+		end
+		Song.create!(
+			video: params["video"], 
+			thumbnail: params["thumbnail"], 
+			title: params["title"], 
+			user: user 
+		)
 		render json: {state: "Download started"}
 	end
 
@@ -22,7 +32,6 @@ class SongsController < ApplicationController
 	end
 
 	def homepage_search
-		puts params
 		redirect_to root_path
 	end
 

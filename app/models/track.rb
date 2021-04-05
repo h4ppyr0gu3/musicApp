@@ -1,4 +1,4 @@
 class Track < ApplicationRecord
 	belongs_to :user
-	has_one :song
+	belongs_to :song
 end

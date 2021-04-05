@@ -10,7 +10,7 @@ module MusicServices
 				title.to_s.encode('UTF-8', invalid: :replace, undef: :replace, replace: '')
 				primary_hash ={} 
 				cleaning = []
-				cleaner = ["Official Lyric Video", "Official Video", "Official Music Video", "Lyrics", "Lyric Video", ",", "(Audio)", "(Official Audio)", "[Audio]"]
+				cleaner = ["Official Lyric Video", "Official Video", "Official Music Video", "Lyrics", "Lyric Video", ",", "(Audio)", "(Official Audio)", "[Audio]", "(Directed by Cole Bennett)"]
 				cleaner.each do |t| 
 					if title.include? t.to_s
 						title = title.sub(t.to_s, "")
@@ -18,17 +18,19 @@ module MusicServices
 				end
 				if title.include? "-"
 					split_array = title.split "-"
-					pp split_array
-					primary_hash[:first] = includes(split_array[1])
-					primary_hash[:second] = includes(split_array[0])
+					primary_hash[:first] = includes(split_array[0])
+					primary_hash[:second] = includes(split_array[1])
+					if split_array[2] != nil
+						primary_hash[:third] = includes(split_array[2])
+					end
 				else
 					primary_hash[:first] = includes(title)	
 				end
 				return primary_hash
 			end
 
-			def logic hash
-				hash.each do |k, v|
+			def logic input
+				input.each do |k, v|
 					v.each do |el|
 						el = includes(el)
 					end
@@ -42,14 +44,9 @@ module MusicServices
 					array = array.map{ |k| k.gsub(j, "") }
 				end
 				array = array.map{ |k| k.gsub(" x ", " ")}
+				array = array.map{ |k| k.gsub(" dior", " Dior")}
 				array = array.map(&:strip)
-				# array = array.map(&:strip)
-
 				array.reject(&:blank?)
-				# array = array.reject { |item| item == '' }
-				# array.delete("")
-
-				pp array
 			end
 
 			def includes string

@@ -5,7 +5,10 @@ Rails.application.routes.draw do
 
   devise_for :users
 	root to: "static_pages#home"
-	get 'conditions', to: 'static_pages#conditions'
+	get 'terms', to: 'static_pages#terms_of_use'
+	get 'contact', to: 'static_pages#contact'
+	get 'copyright', to: 'static_pages#copyright_claims'
+	get 'privacy', to: 'static_pages#privacy_policy'
 	resources :songs
 	resources :searches
 	resources :tracks

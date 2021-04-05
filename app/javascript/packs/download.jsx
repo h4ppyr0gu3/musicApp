@@ -6,16 +6,24 @@ class Download extends React.Component {
 
 	constructor(props) {
 		super(props);
+		this.state = {clicked: false};
 	}
 
 	handleClick = (e) => {
+		if (this.state.clicked != true) {
 		console.log(this.props);
 		console.log(this.props.thumbnailUrl);
-		var data = {};
-		data = {"video": this.props.videoUrl.toString(),
-						"thumbnail": this.props.thumbnailUrl.toString()};
-		postData("/songs", data)
-		.then(data => {console.log(data)});
+		var query = {};
+		query = {"video": this.props.videoUrl.toString(),
+						"thumbnail": this.props.thumbnailUrl.toString(),
+						"title": this.props.name.toString()};
+		postData("/songs", query)
+		.then(data => {console.log(data);
+			if (data["state"] == "Download started") {
+				this.setState({clicked: true})
+			}
+			});
+	};		
 	}
 
 	render() {

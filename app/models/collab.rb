@@ -1,4 +1,4 @@
 class Collab < ApplicationRecord
-	has_one :artist
-	has_one :song
+	belongs_to :artist
+	belongs_to :song
 end

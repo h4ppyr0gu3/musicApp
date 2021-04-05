@@ -58,8 +58,8 @@ ActiveRecord::Schema.define(version: 2021_04_01_164912) do
   end
 
   create_table "collabs", force: :cascade do |t|
-    t.bigint "artist_id"
     t.bigint "song_id"
+    t.bigint "artist_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["artist_id"], name: "index_collabs_on_artist_id"
@@ -69,16 +69,15 @@ ActiveRecord::Schema.define(version: 2021_04_01_164912) do
   create_table "songs", force: :cascade do |t|
     t.string "song_name"
     t.string "album_art_url"
-    t.bigint "artist_id"
+    t.string "yt_title"
+    t.integer "status", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["artist_id"], name: "index_songs_on_artist_id"
   end
 
   create_table "tracks", force: :cascade do |t|
-    t.string "track_name"
-    t.bigint "user_id"
     t.bigint "song_id"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["song_id"], name: "index_tracks_on_song_id"

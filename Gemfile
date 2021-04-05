@@ -26,7 +26,7 @@ gem 'selenium-webdriver'
 
 gem 'capybara'
 
-gem 'id3tag'
+gem 'taglib-ruby'
 
 gem 'nokogiri'
 
@@ -45,6 +45,10 @@ gem 'sidekiq'
 gem 'bulma-rails'
 
 gem 'react-rails'
+
+gem 'kaminari'
+
+
 
 
 

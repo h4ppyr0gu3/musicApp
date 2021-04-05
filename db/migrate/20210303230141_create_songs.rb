@@ -4,7 +4,8 @@ class CreateSongs < ActiveRecord::Migration[6.1]
 
     	t.string :song_name
     	t.string :album_art_url
-    	t.references :artist
+    	t.string :yt_title
+    	t.integer :status, default: 0
 
       t.timestamps
     end

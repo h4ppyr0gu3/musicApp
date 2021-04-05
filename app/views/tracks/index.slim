@@ -1,2 +1,35 @@
 .container.p-5
-	h1 here are all the songs a user has 
+	h1 here are all the songs
+
+
+	
+	
+	.columns.is-multiline
+		- @all_tracks.each do |track|	
+			.column.is-size-6.is-half
+				.box
+					.columns
+						.column
+							= track.inspect
+						.column
+							= track.song&.song_name
+					/ .columns
+					/ 	- track.songs.artists.each do |a|
+					/ 		.column.is-size-7
+					/ 			=	a[:name]
+					/ - if track.song.music_file.attached?
+					/ 	.columns
+					/ 		.column
+					/ 			= audio_tag url_for(track.song.music_file), controls: true, preload: "none"
+					/ 		.column.is-centered-middle
+					/ 			= link_to "Download", url_for(track.song.music_file), class: "button"
+					/ 			= link_to "remove from your tracks", track_path(track.id), method: :delete, class: "button"
+					/ - else 
+					/ 	= link_to "sorry we have a bug please report it"
+					/ 	= link_to "remove from your tracks", track_path(track.id), method: :delete, class: "button"
+
+				 
+				
+
+
+	= paginate @all_tracks

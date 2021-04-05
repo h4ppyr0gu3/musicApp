@@ -1,13 +1,11 @@
-section.hero.image_first_background.is-fullheight
+.container
 
-	.is-size-2.has-text-centered.has-text-white Search
-	.columns
+	.is-size-2.has-text-centered Welcome to the musicApp!
+	.columns.my-3
 		.column.is-6.is-offset-3
-			form (id="search_form" class="has-text-white")
-				= label_tag :"enter a youtube URL or search"
-				= text_field_tag :query, {}, autofocus: true, class: "input"
-				.is-centered-middle 
-					= button_tag :Search, type: "submit", class: "button m-2", id: "search_button"
-	.columns.is-multiline#load_json
+			.is-centered-middle 
+				= link_to "Search songs", search_results_path
+				= link_to "All songs"
+.app#root
 
-= javascript_pack_tag 'youtube_results'
+= javascript_pack_tag 'homepage'
