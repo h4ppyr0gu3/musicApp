@@ -21,7 +21,7 @@ test:
 
 production:
   <<: *default
-  database: musicapp_production
-  username: ENV['RDS_USERNAME']
-  password: ENV['RDS_PASSWORD']
-  host: ENV['RDS_HOST']
+  database: musicapp
+  username: <%= ENV['RDS_USERNAME'] %>
+  password: <%= ENV['RDS_PASSWORD'] %>
+  host: <%= ENV['RDS_HOST'] %>
