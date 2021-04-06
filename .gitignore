@@ -40,6 +40,4 @@ yarn-debug.log*
 .yarn-integrity
 
 .env
-/lib/youtube.sh
-/lib/delete_from_tmp
 

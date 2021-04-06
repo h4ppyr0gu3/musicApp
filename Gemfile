@@ -48,6 +48,7 @@ gem 'react-rails'
 
 gem 'kaminari'
 
+gem 'rails_admin', '~> 2.0'
 
 
 
