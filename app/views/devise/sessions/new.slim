@@ -1,0 +1,27 @@
+.container.is-centered-middle
+  .box.is-flex-column
+    .is-size-2 Log in
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| 
+      .field
+        = f.label :email, class: "label"
+        .control
+          = f.email_field :email, autofocus: true, autocomplete: "email", class: "input is-medium", placeholder: "example@email.com"
+      .field
+        = f.label :password, class: "label"
+        .control
+          = f.password_field :password, autocomplete: "current-password", class: "input is-medium", placeholder: "password"
+
+      - if devise_mapping.rememberable?
+        .field
+          .control
+            label.checkbox
+              = f.check_box :remember_me
+              |  Remember me
+
+      .actions
+          = f.submit "Log in", class: "button"
+      .has-text-centered
+        |Don't have an account? 
+        = render "devise/shared/links"
+
+

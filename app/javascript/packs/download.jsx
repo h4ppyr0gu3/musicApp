@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import postData from './comms';
+import DownloadNotification from './download_notification';
 
 class Download extends React.Component {
 
@@ -27,6 +28,9 @@ class Download extends React.Component {
 	}
 
 	render() {
+		if (this.state.clicked == true) {
+			var Notification = <DownloadNotification/>
+		}
 		return(
 			<div>
 				<div className="columns">
@@ -38,6 +42,12 @@ class Download extends React.Component {
 				<div className="columns">
 					<div className="column is-centered-middle">
 						<button type="button" value="Download" className="button is-centered-middle" onClick={this.handleClick}>Download</button>
+					</div>
+
+				</div>
+				<div className="columns">
+					<div className="column">
+						{Notification}
 					</div>
 				</div>
 			</div>

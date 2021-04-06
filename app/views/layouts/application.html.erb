@@ -12,13 +12,9 @@
   </head>
 
   <body>
-    <div class="body">
-      <%= render "layouts/header" %>
-      <div id="content-wrap">
-        <%= yield %>
-      </div>
-      <%= render "layouts/footer" %>
-    </div>
-
+    <%= render "layouts/header" %>
+    <%= render "layouts/error_messages" %>
+    <%= yield %>
+    <%= render "layouts/footer" %>
   </body>
 </html>

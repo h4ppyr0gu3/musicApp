@@ -12,10 +12,12 @@ Rails.application.routes.draw do
 	resources :songs
 	resources :searches
 	resources :tracks
+	resources :contact_emails, only: :create
 
 	post 'search_music', to: 'searches#search_music'
 	get 'search_results', to: 'searches#search_results'
 	get 'ruby_search', to: 'searches#ruby_search'
 	post 'homepage_search', to: 'songs#homepage_search'
+	post 'contact_mail', to: 'static_pages#contact_mail'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

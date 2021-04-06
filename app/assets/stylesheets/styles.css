@@ -2,36 +2,11 @@
   background-image: url('./../images/music.jpg'), url('./../images/mixer.jpg');
 }
 
-.card {
-    height: 100%;
-}
-
-html,
-body {
-  padding: 0;
-  margin: 0;
-  /*transition: all 0.2s ease-in-out;*/
-  /*transition: height 0.35s ease;*/
-  /*transition: width 2s, height 2s, transform 2s;*/
-  /*transition: width 2s linear 1s;*/
-}
-
-
-.body {
-  height: 100%;
+.foot {
   position: relative;
-  min-height: 100vh;
-}
-
-#content-wrap {
-  padding-bottom: 10rem;    /* Footer height */
-}
-
-#footer {
-	margin-top: 2.5rem; 
-  position: absolute;
   bottom: 0;
   width: 100%;
   background-color: black;
+  padding: unset;
+  margin-top: 5rem;
 }
-

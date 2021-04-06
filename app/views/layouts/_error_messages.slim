@@ -1,0 +1,4 @@
+.div
+	- flash.each do |k,v|
+		= content_tag :div, v, class: "notification is-#{k}", style: "position: relative;"
+		button.delete

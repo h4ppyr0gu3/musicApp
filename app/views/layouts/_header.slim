@@ -1,13 +1,13 @@
 nav.navbar.has-background-black role="navigation" aria-label="main navigation"
-  div.navbar-brand
+  .navbar-brand
     = link_to "musicApp", root_path, class: "has-text-white is-size-4 p-2"
 
-    a.navbar-burger role="button" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample"
+    a.navbar-burger role="button" aria-label="menu" aria-expanded="false" data-target="navMenu"
       span aria-hidden="true"
       span aria-hidden="true"
       span aria-hidden="true"
 
-  .navbar-menu
+  .navbar-menu#navMenu
     .navbar-start
 
       .navbar-item.has-dropdown.is-hoverable
@@ -15,7 +15,7 @@ nav.navbar.has-background-black role="navigation" aria-label="main navigation"
         .navbar-dropdown
           = link_to "Youtube Search", search_results_path, class: "navbar-item"
           a.navbar-item Jobs
-          a.navbar-item Contact
+          = link_to "All songs", songs_path, class: "navbar-item"
           hr.navbar-divider
           a.navbar-item Report an issue
             
@@ -29,3 +29,5 @@ nav.navbar.has-background-black role="navigation" aria-label="main navigation"
           - else
             = link_to "Sign up", new_user_registration_path, class: "button"
             = link_to "Log in", new_user_session_path, class: "button is-light"
+
+= javascript_pack_tag 'burger', 'data-turbolinks-track': 'reload' 
