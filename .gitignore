@@ -40,4 +40,5 @@ yarn-debug.log*
 .yarn-integrity
 
 .env
-
+/bin/youtube_downloader
+/bin/rm_tmp

@@ -13,8 +13,8 @@ module MusicServices
 
 			def download_video_to_tmp videoUrl
 				videoUrl = "https://www.youtube.com/watch?v="  + videoUrl
-				youtube = Rails.root.join("lib/youtube.sh").to_s
-				title = %x{sh #{youtube} #{videoUrl}}
+				youtube = Rails.root.join("/bin/youtube_downloader").to_s
+				title = %x{./#{youtube} #{videoUrl}}
 			end
 
 		end

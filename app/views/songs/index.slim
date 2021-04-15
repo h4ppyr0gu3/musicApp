@@ -1,25 +1,4 @@
-.container
-	- @index.each do |s|
-		.box.is-size-6
-			.columns
-				.column.is-2
-					img src="#{s.album_art_url}" 
-				.column
-					.columns
-						.column
-							= s.song_name
-						.column
-							= s.yt_title
-						- if s&.music_file&.attached?
-							.column
-								= audio_tag url_for(s.music_file), controls: true, preload: "none"
-
-						- else
-							.column
-								= link_to "delete", song_path(s.id), method: :delete, class: "button is-size-7"
-					.columns
-						- s.artists.each do |a|
-							.column.is-size-7
-								= a.name
-						.column
+.container.pt-5
+	.something#root
+= javascript_pack_tag "tracks_index"
 							

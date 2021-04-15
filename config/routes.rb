@@ -1,4 +1,5 @@
 require 'sidekiq/web'
+require 'sidekiq/cron/web'
 
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
@@ -10,6 +11,9 @@ Rails.application.routes.draw do
 	get 'contact', to: 'static_pages#contact'
 	get 'copyright', to: 'static_pages#copyright_claims'
 	get 'privacy', to: 'static_pages#privacy_policy'
+	get 'all_songs', to: 'songs#all_songs'
+	get 'all_tracks', to: 'tracks#all_tracks'
+	post 'attributes', to: 'songs#confirm'
 	resources :songs
 	resources :searches
 	resources :tracks

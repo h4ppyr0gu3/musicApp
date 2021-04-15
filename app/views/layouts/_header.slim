@@ -9,15 +9,9 @@ nav.navbar.has-background-black role="navigation" aria-label="main navigation"
 
   .navbar-menu#navMenu
     .navbar-start
-
-      .navbar-item.has-dropdown.is-hoverable
-        a.navbar-link.has-text-white Search
-        .navbar-dropdown
-          = link_to "Youtube Search", search_results_path, class: "navbar-item"
-          a.navbar-item Jobs
-          = link_to "All songs", songs_path, class: "navbar-item"
-          hr.navbar-divider
-          a.navbar-item Report an issue
+      .navbar-item
+        = link_to "Youtube Search", search_results_path, class: "navbar-item has-text-white"
+        = link_to "All songs", songs_path, class: "navbar-item has-text-white"
             
 
     .navbar-end

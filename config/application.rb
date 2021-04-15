@@ -19,5 +19,7 @@ module MusicApp
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.hosts << "04f1429c1b99.ngrok.io"
+    config.hosts << "c21f9944648d.ngrok.io"
   end
 end

@@ -10,3 +10,7 @@
   padding: unset;
   margin-top: 5rem;
 }
+
+iframe{
+  overflow: hidden;
+}
