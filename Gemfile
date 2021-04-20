@@ -48,8 +48,6 @@ gem 'react-rails'
 
 gem 'kaminari'
 
-gem 'rails_admin'
-
 gem 'sidekiq-cron'
 
 
