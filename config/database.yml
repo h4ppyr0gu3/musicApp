@@ -10,10 +10,8 @@ default: &default
   pool: 5
 
 development:
-  adapter: postgresql
-  encoding: unicode
+  <<: *default
   database: musicapp_development
-  pool: 5
 
 test:
   <<: *default
@@ -21,8 +19,7 @@ test:
 
 production:
   <<: *default
-  database: musicapp
-  username: <%= ENV['LOCAL_USERNAME'] %>
-  password: <%= ENV['LOCAL_PASSWORD'] %>
+  database: musicapp_production
+  # username: <%= ENV['LOCAL_USERNAME'] %>
+  # password: <%= ENV['LOCAL_PASSWORD'] %>
   # host: <%= ENV['RDS_HOST'] %>
-  port: 5432
