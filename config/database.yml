@@ -22,7 +22,7 @@ test:
 production:
   <<: *default
   database: musicapp
-  username: <%= ENV['RDS_USERNAME'] %>
-  password: <%= ENV['RDS_PASSWORD'] %>
-  host: <%= ENV['RDS_HOST'] %>
-  port: <%= ENV['RDS_PORT'] %>
+  username: <%= ENV['LOCAL_USERNAME'] %>
+  password: <%= ENV['LOCAL_PASSWORD'] %>
+  # host: <%= ENV['RDS_HOST'] %>
+  port: 5432
