@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-class DownloadNotification extends React.Component {
+class Notification extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {clicked: false};
@@ -16,12 +16,12 @@ class DownloadNotification extends React.Component {
 			return null;
 		}
 		return(
-			<div className="notification is-success">
+			<div className={"notification is-" + this.props.colour}>
 				<button className="delete" onClick={this.handleClick}></button>
-				Download has started!
+				{this.props.message}
 			</div>
 		)
 	}
 }
 
-export default DownloadNotification
+export default Notification;

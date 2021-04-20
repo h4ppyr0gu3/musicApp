@@ -14,3 +14,19 @@
 iframe{
   overflow: hidden;
 }
+
+.icon:hover {
+	cursor: pointer;
+	transition: all 200ms ease;
+
+	path {
+		transition: all 200ms ease;
+		fill: #454545;
+	}
+}
+
+.icon {
+	path {
+		transition: all 200ms ease;
+	}
+}

@@ -52,7 +52,7 @@ class SongsController < ApplicationController
 			title: params["title"], 
 			user: user 
 		)
-		render json: {state: "Download started"}
+		render json: {success: "Download started"}
 	end
 
 	def update
@@ -60,7 +60,7 @@ class SongsController < ApplicationController
 
 	def destroy
 		Song.find(params[:id]).destroy
-		redirect_to songs_path
+		render json: {success: "destroyed"}
 	end
 
 	def edit
@@ -68,13 +68,17 @@ class SongsController < ApplicationController
 
 	def confirm
 		song = Song.find(params[:id])
-		song.update!(status: :confirmed, song_name: params[:title])
+		title = params[:title]
+		title = title.strip
+		song.update!(status: :confirmed, song_name: title)
 		artists = Collab.where(song_id: params[:id])
 		artists.each do |collab|
 			collab.destroy
 		end
 		artists = params[:Artists]
 		artists = artists.reject { |c| c.empty? }
+		artists = artists.reject { |c| c.blank? }
+		artists = artists.map { |c| c.strip }
 		array = []
 		artists.each do |artist|
 			collab = Artist.find_or_create_by!(name: artist)
@@ -86,9 +90,4 @@ class SongsController < ApplicationController
 
 
 	end
-
-	def homepage_search
-		redirect_to root_path
-	end
-
 end

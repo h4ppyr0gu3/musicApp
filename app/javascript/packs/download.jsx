@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import postData from './comms';
-import DownloadNotification from './download_notification';
+import Notification from './notification';
 
 class Download extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = {clicked: false};
+		this.state = {clicked: false,
+			data: {something: "nil"}};
 	}
 
 	handleClick = (e) => {
@@ -15,21 +16,25 @@ class Download extends React.Component {
 		console.log(this.props);
 		console.log(this.props.thumbnailUrl);
 		var query = {};
-		query = {"video": this.props.videoUrl.toString(),
-						"thumbnail": this.props.thumbnailUrl.toString(),
-						"title": this.props.name.toString()};
+		query = {"video": this.props.videoUrl,
+						"thumbnail": this.props.thumbnailUrl,
+						"title": this.props.name};
 		postData("/songs", query)
-		.then(data => {console.log(data);
-			if (data["state"] == "Download started") {
-				this.setState({clicked: true})
-			}
+		.then(data => {console.log(data),
+			this.setState({data: data}, console.log(this.state.data));
+			
+				this.setState({clicked: true}, console.log(this.state.data))
+			
 			});
 	};		
 	}
 
 	render() {
-		if (this.state.clicked == true) {
-			var Notification = <DownloadNotification/>
+		if (this.state.clicked == true && this.state.data["success"] != null) {
+			var notification = <Notification message={this.state.data["success"]} colour="success"/>
+		}
+		if (this.state.clicked == true && this.state.data["error"] != null) {
+			var notification = <Notification message={this.state.data["error"]} colour="danger"/>
 		}
 		return(
 			<div>
@@ -47,7 +52,7 @@ class Download extends React.Component {
 				</div>
 				<div className="columns">
 					<div className="column">
-						{Notification}
+						{notification}
 					</div>
 				</div>
 			</div>

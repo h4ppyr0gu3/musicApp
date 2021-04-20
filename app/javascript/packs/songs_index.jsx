@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import getData from './getcomms'; // takes url and json data that it submits, returns data async
 import * as bulma from './../../assets/stylesheets/application.scss';
-import SongElement from './song_element';
+import SongElement from './song_element_confirmed';
 
 class SongsIndex extends React.Component {
 	constructor(props) {
@@ -31,14 +31,16 @@ class SongsIndex extends React.Component {
     	  artists={element["artists"]}
     		key={element["yt"]}
     		image={element["img"]}
-    	  file={element["src"]} />
+    	  file={element["src"]}
+        status={element["status"]}
+        id_no={element["id"]} 
+        place="songs"/>
       )
   	}
     )
 
    	return (
    		<div>
-   			<p> heaiuh</p>
    			{songs}
 
    		</div>

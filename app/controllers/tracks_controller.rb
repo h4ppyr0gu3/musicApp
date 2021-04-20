@@ -33,15 +33,23 @@ class TracksController < ApplicationController
 	end
 
 	def create
+		puts params
 		Track.create!(user_id: current_user.id, song_id: params[:id])
+		render json: {success: "added successfully"}
 	end
 
 	def edit
 	end
 
 	def destroy
-		Song.find(params[:id]).destroy
-		redirect_to tracks_path
+		user = current_user.id
+		track = Track.where(user_id: user, song_id: params[:id])
+		track.each do |t|
+			t.destroy
+		end
+		render json: {success: "removed from tracks!"}
 	end
+
+
 
 end

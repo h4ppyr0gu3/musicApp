@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import getData from './getcomms'; // takes url and json data that it submits, returns data async
 import * as bulma from './../../assets/stylesheets/application.scss';
-import SongElement from './song_element';
+import SongElement from './song_element_confirmed';
 import Playlist from './intouch-mp3-player/dist/index';
 
 
@@ -31,20 +31,19 @@ class TracksIndex extends React.Component {
     		image={element["img"]}
     	  file={element["src"]}
         status={element["status"]}
-        id_no={element["id"]} />)
+        id_no={element["id"]}
+        place="tracks" />)
   	}
     )
     
-    var player;
-    if (this.state.results["items"][0] != null) {
-      player = (<Playlist tracks={this.state.results["items"]} />)}
+    // var player;
+    // if (this.state.results["items"][0] != null) {
+    //   player = (<Playlist tracks={this.state.results["items"]} />)} player rendered with {player}
 
    	return (
    		<>
         <div class="is-centered-middle is-size-7 p-3"> Please help us by confirming tracks the way you would want them</div>
    			{songs}
-        {player}
-
    		</>
   	)
   }
