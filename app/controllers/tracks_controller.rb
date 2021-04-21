@@ -11,23 +11,25 @@ class TracksController < ApplicationController
 	def all_tracks
 		@user = current_user.id
 		users_tracks = Song.joins(:tracks).where(tracks: { user_id: @user})
-		users_tracks = users_tracks.reject{ |s| s.music_file.attached? = false}
+		# users_tracks = users_tracks.reject{ |s| s.music_file.attached? = false}
 		items = []
 		users_tracks.each do |s|
-			array = []
-			s.artists.each do |a|
-				array.push(a.name)
+			if s.music_file.attached? 
+				array = []
+				s.artists.each do |a|
+					array.push(a.name)
+				end
+				artists = array&.join(", ")
+				entry = {}
+				entry["name"] = s&.song_name
+				entry["artists"] = artists
+				entry["yt"] = s.yt_title
+				entry["src"] = url_for(s.music_file)
+				entry["img"] = s.album_art_url
+				entry["status"] = s.status
+				entry["id"] = s.id
+				items.push(entry)
 			end
-			artists = array&.join(", ")
-			entry = {}
-			entry["name"] = s&.song_name
-			entry["artists"] = artists
-			entry["yt"] = s.yt_title
-			entry["src"] = url_for(s.music_file)
-			entry["img"] = s.album_art_url
-			entry["status"] = s.status
-			entry["id"] = s.id
-			items.push(entry)
 		end
 		response = {items: items}
 		render json: response
