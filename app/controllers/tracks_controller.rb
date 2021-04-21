@@ -11,6 +11,7 @@ class TracksController < ApplicationController
 	def all_tracks
 		@user = current_user.id
 		users_tracks = Song.joins(:tracks).where(tracks: { user_id: @user})
+		users_tracks = users_tracks.reject{ |s| s.music_file.attached? = false}
 		items = []
 		users_tracks.each do |s|
 			array = []
