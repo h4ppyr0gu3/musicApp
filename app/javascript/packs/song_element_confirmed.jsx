@@ -18,6 +18,7 @@ class SongElement extends React.Component {
     // this.handleAdd = this.handleAdd.bind(this);
     // this.handleDownload = this.handleDownload.bind(this);
     this.onclickmore = this.onclickmore.bind(this);
+    this.handleAdd = this.handleAdd.bind(this);
 	}
 
   handleAdd() {

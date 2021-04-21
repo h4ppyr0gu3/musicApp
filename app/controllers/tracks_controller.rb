@@ -37,7 +37,7 @@ class TracksController < ApplicationController
 
 	def create
 		puts params
-		Track.create!(user_id: current_user.id, song_id: params[:id])
+		Track.find_or_create_by!(user_id: current_user.id, song_id: params[:id])
 		render json: {success: "added successfully"}
 	end
 
