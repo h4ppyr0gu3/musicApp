@@ -27,14 +27,6 @@ RSpec.describe 'song added and removed depending on path', type: :feature do
 	    click_button("DOWNLOAD", match: :first)
 	    expect(page).to have_css(".download")
 	    click_button("Download")
-	    # expect(page).to have_content('download started')
-	    sleep(2.seconds)
-	    # expect(DownloadsWorker).to have_enqueued_sidekiq_job
-			# expect { DownloadsWorker.perform_async({
-			# 	"video"=>"03SeeJcQu9c",
-			# 	"thumbnail"=>"https://i.ytimg.com/vi/03SeeJcQu9c/default.jpg",
-			#   "title"=>"KYLE - YES! feat. Rich The Kid &amp; K CAMP [Audio]",
-			# 	"user"=>1}) }.to change { DownloadsWorker.jobs.size }.by(1)
 	    click_button("PLAY", match: :first)
 	    expect(page).to have_css("iframe")
 		end
