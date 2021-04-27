@@ -10,7 +10,10 @@ class Song < ApplicationRecord
 	has_many :artists, through: :collabs
 	has_many :users, through: :tracks
 
-	before_save :checklist
+	before_validation :checklist
+
+	validates :album_art_url, presence: true
+	validates :yt_title, presence: true
 
 	def checklist
 		return if @video.nil? || @thumbnail.nil? || @title.nil?

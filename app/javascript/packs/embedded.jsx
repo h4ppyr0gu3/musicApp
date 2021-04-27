@@ -7,9 +7,13 @@ export default class Video extends React.Component {
 	}
 	render () {
 		return (
-			<iframe width="100%" height="340" src={this.props.source} title="YouTube video player" 
-		    frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen>
-		  </iframe>
+			<div className="columns video">
+        <div className="column is-centered-middle">
+					<iframe width="100%" height="340" src={this.props.source} title="YouTube video player" 
+				    frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen>
+				  </iframe>
+			  </div>
+			</div>
 
    )}
 

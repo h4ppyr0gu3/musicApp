@@ -22,10 +22,6 @@ gem 'devise'
 
 gem 'ransack'
 
-gem 'selenium-webdriver'
-
-gem 'capybara'
-
 gem 'taglib-ruby'
 
 gem 'nokogiri'
@@ -81,7 +77,22 @@ group :development do
 end
 
 group :test do
+  gem 'rspec-rails'
+
   gem 'webdrivers'
+
+  gem 'selenium-webdriver'
+
+  gem 'capybara'
+
+  gem 'simplecov', require: false
+
+  gem 'database_cleaner-active_record'
+
+  gem 'rspec-sidekiq'
+
+  # gem 'database_cleaner-redis'
+
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

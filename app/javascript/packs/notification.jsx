@@ -16,9 +16,13 @@ class Notification extends React.Component {
 			return null;
 		}
 		return(
-			<div className={"notification is-" + this.props.colour}>
-				<button className="delete" onClick={this.handleClick}></button>
-				{this.props.message}
+			<div className="columns">
+				<div className="column">
+					<div className={"notification is-" + this.props.colour}>
+						<button className="delete" onClick={this.handleClick}></button>
+						{this.props.message}
+					</div>
+				</div>
 			</div>
 		)
 	}

@@ -46,16 +46,8 @@ class Results extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="columns">
-              <div className="column is-centered-middle">
-                {download}
-              </div>
-            </div>
-            <div className="columns">
-              <div className="column is-centered-middle">
-                {video}
-              </div>
-            </div>
+            {download}
+            {video}
           </div>
         </div>
       </div>

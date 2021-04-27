@@ -46,7 +46,7 @@ class SongsController < ApplicationController
 		else 
 			user = nil
 		end
-		Song.create!(
+		Song.create(
 			video: params["video"], 
 			thumbnail: params["thumbnail"], 
 			title: params["title"], 

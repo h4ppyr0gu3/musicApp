@@ -42,3 +42,4 @@ yarn-debug.log*
 .env
 /bin/youtube_downloader
 /bin/rm_tmp
+coverage

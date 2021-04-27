@@ -38,7 +38,7 @@ class Download extends React.Component {
 		}
 		return(
 			<div>
-				<div className="columns">
+				<div className="columns download">
 					<div className="column">
 						<p className="is-centered-middle"> Are you sure you want to download this song?</p>
 						<p className="is-centered-middle"> The file will be downloaded and you will be informed when it is done</p>
@@ -48,13 +48,8 @@ class Download extends React.Component {
 					<div className="column is-centered-middle">
 						<button type="button" value="Download" className="button is-centered-middle" onClick={this.handleClick}>Download</button>
 					</div>
-
 				</div>
-				<div className="columns">
-					<div className="column">
-						{notification}
-					</div>
-				</div>
+				{notification}
 			</div>
 		)
 	}

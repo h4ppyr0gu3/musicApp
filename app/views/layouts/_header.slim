@@ -1,6 +1,6 @@
-nav.navbar.has-background-black role="navigation" aria-label="main navigation"
+nav.navbar role="navigation" aria-label="main navigation"
   .navbar-brand
-    = link_to "musicApp", root_path, class: "has-text-white is-size-4 p-2"
+    = link_to "musicApp", root_path, class: "has-text-black is-size-4 p-2"
 
     a.navbar-burger role="button" aria-label="menu" aria-expanded="false" data-target="navMenu"
       span aria-hidden="true"
@@ -10,18 +10,18 @@ nav.navbar.has-background-black role="navigation" aria-label="main navigation"
   .navbar-menu#navMenu
     .navbar-start
       .navbar-item
-        = link_to "Youtube Search", search_results_path, class: "navbar-item has-text-white"
-        = link_to "All songs", songs_path, class: "navbar-item has-text-white"
+        = link_to "Youtube Search", search_results_path, class: "navbar-item has-text-black"
+        = link_to "All songs", songs_path, class: "navbar-item has-text-black"
             
 
     .navbar-end
       .navbar-item
         .buttons
           -if user_signed_in?
-            = link_to "Your Tracks", tracks_path, class: "button"
-            = link_to "Log Out", destroy_user_session_path, class: "button", method: :delete
+            = link_to "Your Tracks", tracks_path, class: "button", name: "Your Tracks"
+            = link_to "Log Out", destroy_user_session_path, class: "button", method: :delete, name: "Log Out"
           - else
-            = link_to "Sign up", new_user_registration_path, class: "button"
-            = link_to "Log in", new_user_session_path, class: "button is-light"
+            = link_to "Sign up", new_user_registration_path, class: "button", name: "Sign up"
+            = link_to "Log in", new_user_session_path, class: "button is-light", name: "Log in"
 
-= javascript_pack_tag 'burger', 'data-turbolinks-track': 'reload' 
+= javascript_pack_tag 'burger'

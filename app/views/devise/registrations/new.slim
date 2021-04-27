@@ -6,7 +6,7 @@
       .field
         = f.label :email, class: "label"
         .control
-          = f.email_field :email, autofocus: true, autocomplete: "email", class: "input", placeholder: "example@email.com"
+          = f.text_field :email, autofocus: true, autocomplete: "email", class: "input", placeholder: "example@email.com"
       .field
         - if @minimum_password_length
           = f.label :"Password (#{@minimum_password_length} characters minimum)", class: "label"
