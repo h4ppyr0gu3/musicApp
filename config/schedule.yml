@@ -1,4 +1,9 @@
-my_first_job:
+clear tmp/downloads:
   cron: "30 02 * * *"
   class: "DeleteCron"
   queue: default
+
+# log rotation:
+#   cron: "0 0 * * 0"
+#   class: "LogRotation"
+#   queue: "default"

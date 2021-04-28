@@ -4,7 +4,7 @@ require 'sidekiq/cron/web'
 Rails.application.routes.draw do
   mount Sidekiq::Web => "/sidekiq" # mount Sidekiq::Web in your Rails app
 
-  devise_for :users
+  devise_for :users, controllers: {omniauth_callbacks: 'omniauth'}
 	root to: "static_pages#home"
 	get 'terms', to: 'static_pages#terms_of_use'
 	get 'contact', to: 'static_pages#contact'
