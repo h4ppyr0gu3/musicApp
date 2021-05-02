@@ -1,0 +1,19 @@
+container.is-centered-middle
+  .box.is-flex-column
+    .is-size-2 Add or Change
+    = form_with model: User.new, url: profile_path(@user.id), method: :put do |f| 
+      .field
+        = f.label :first_name, class: "label"
+        .control
+          = f.text_field :first_name, autofocus: true, class: "label", value: @user.first_name
+      .field
+        = f.label :last_name, class: "label"
+        .control
+          = f.text_field :last_name, class: "label", value: @user.last_name
+      .field
+        = f.label :image, "Profile photo",class: "label"
+        .control
+          = f.file_field :image
+  
+      .actions
+        = f.submit "Update", class: "button" 

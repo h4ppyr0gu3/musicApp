@@ -30,6 +30,7 @@ gem 'omniauth-google-oauth2'
 gem 'activerecord-session_store'
 gem 'omniauth-rails_csrf_protection'
 gem 'omniauth'
+gem 'bulma-extensions-rails'
 
 
 group :development, :test do

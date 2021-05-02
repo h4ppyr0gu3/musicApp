@@ -6,6 +6,20 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: {omniauth_callbacks: 'omniauth'}
 	root to: "static_pages#home"
+	
+	resources :songs, only: %i[all_songs create destroy confirm index]
+	resources :searches, only: %i[search_results search_music]
+	resources :tracks, only: %i[index create destroy all_tracks]
+	resources :contact_emails, only: :create
+	resources :profile, only: %i[add index update settings]
+
+	get 'settings', to: 'profile#settings'
+	get 'add', to: 'profile#add'
+	post 'search_music', to: 'searches#search_music'
+	get 'search_results', to: 'searches#search_results'
+	get 'ruby_search', to: 'searches#ruby_search'
+	post 'homepage_search', to: 'songs#homepage_search'
+	post 'contact_mail', to: 'static_pages#contact_mail'
 	get 'terms', to: 'static_pages#terms_of_use'
 	get 'contact', to: 'static_pages#contact'
 	get 'copyright', to: 'static_pages#copyright_claims'
@@ -13,15 +27,6 @@ Rails.application.routes.draw do
 	get 'all_songs', to: 'songs#all_songs'
 	get 'all_tracks', to: 'tracks#all_tracks'
 	post 'attributes', to: 'songs#confirm'
-	resources :songs
-	resources :searches
-	resources :tracks
-	resources :contact_emails, only: :create
 
-	post 'search_music', to: 'searches#search_music'
-	get 'search_results', to: 'searches#search_results'
-	get 'ruby_search', to: 'searches#ruby_search'
-	post 'homepage_search', to: 'songs#homepage_search'
-	post 'contact_mail', to: 'static_pages#contact_mail'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

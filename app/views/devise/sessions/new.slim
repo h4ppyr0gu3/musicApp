@@ -1,6 +1,14 @@
 .container.is-centered-middle
   .box.is-flex-column
     .is-size-2 Log in
+    .columns.mt-3
+      .column.is-centered-middle
+        p.is-size-5 Log in with:
+
+        / = link_to(image_tag("google")), , do
+        = link_to image_tag("google"), user_google_oauth2_omniauth_authorize_path, method: :post, class: "icon mx-5"
+        = link_to image_tag("facebook"), user_facebook_omniauth_authorize_path, method: :post, class: "icon mx-5"
+    .is-divider data-content="OR"
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| 
       .field
         = f.label :email, class: "label"
@@ -20,8 +28,7 @@
 
       .actions
           = f.submit "Log in", class: "button"
-      .has-text-centered
-        |Don't have an account? 
-        = render "devise/shared/links"
+    p Don't have an account? 
+    = link_to "Log in", new_user_registration_path
 
 

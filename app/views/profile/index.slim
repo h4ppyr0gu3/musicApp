@@ -1,0 +1,82 @@
+.container
+	.columns
+	  .column
+	    nav.panel
+	      .panel-block
+	        p.control
+	          input.input type="text" placeholder="Search"
+	      .panel-block>
+	        button.button.is-link.is-outlined.is-fullwidth Search
+	      a.panel-block
+	        span.panel-icon
+	          = image_tag src=('friends')
+	        | Friends
+	      a.panel-block
+	        span.panel-icon
+	          = image_tag src=('cluster-data')
+	        | Groups
+	      a.panel-block href="tracks"
+	        span.panel-icon
+	          = image_tag src=('vinyl')
+	        | Tracks
+	      a.panel-block
+	        span.panel-icon
+	          = image_tag src=('star-empty')
+	        | Favourites
+	      
+
+	      a.panel-block
+	        span.panel-icon
+	          = image_tag src=('audio-playlist')
+	        | Playlists
+	      a.panel-block href="settings"
+	        = image_tag src=('settings-line'), class: "panel-icon"
+	        | Settings
+	      a.panel-block href="/users/edit"
+	        span.panel-icon
+	          = image_tag src=('password')
+	        | change password
+	      / a.panel-block
+	        span.panel-icon
+	          = image_tag src=('control-panel')
+	        | Your Mix (coming soon)
+	  .column
+			.columns
+				.column
+					= @user.first_name
+					br
+					= @user.last_name
+					a.icon
+						= link_to image_tag('edit'), add_path, class: "icon" 
+				.column
+					= image_tag @user.image, width: "100", height: "100"
+			.columns
+				.column
+					p.is-size-4
+						| Stats:
+					p.is-size-7 
+						| (updated daily)
+					.columns.pt-3
+						.column
+							.table-container
+								table.table.is-striped.is-fullwidth
+									tr
+										td Contributions:
+										td 
+											= @user.contributions
+									tr
+										td Songs:
+										td
+											= @user.songs.count
+									tr
+										td Playlists:
+										td
+											= @user.playlists 
+									tr
+										td Friends:
+										td
+											= @user.friends
+									tr 
+										td Groups: 
+										td
+											= @user.groups

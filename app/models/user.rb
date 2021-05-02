@@ -1,6 +1,9 @@
 class User < ApplicationRecord
 	has_many :tracks
 	has_many :songs, through: :tracks
+	has_one_attached :image do |attachable|
+    attachable.variant :thumb, resize: "100x100"
+  end
 
 	
 	

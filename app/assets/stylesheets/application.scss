@@ -1,11 +1,14 @@
 @import "./colours";
 
+
 @import "bulma/bulma";
+@import 'bulma-extensions';
 
 @import "./utils";
 @import "./flexbox";
 
 @import "styles";
+
 
 // .container {
 // 	@include touch {

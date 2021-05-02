@@ -41,9 +41,6 @@ class TracksController < ApplicationController
 		render json: {success: "added successfully"}
 	end
 
-	def edit
-	end
-
 	def destroy
 		user = current_user.id
 		track = Track.where(user_id: user, song_id: params[:id])

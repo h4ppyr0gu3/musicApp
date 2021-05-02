@@ -37,9 +37,6 @@ class SongsController < ApplicationController
 		render json: response
 	end
 
-	def new
-	end
-
 	def create
 		if user_signed_in?
 			user = current_user.id
@@ -55,15 +52,9 @@ class SongsController < ApplicationController
 		render json: {success: "Download started"}
 	end
 
-	def update
-	end
-
 	def destroy
 		Song.find(params[:id]).destroy
 		render json: {success: "destroyed"}
-	end
-
-	def edit
 	end
 
 	def confirm

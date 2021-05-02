@@ -1,11 +1,5 @@
 class SearchesController < ApplicationController
 
-	def set_search
-	end
-
-	def ruby_search songs_json
-	end
-
 	def search_results
 	end
 
