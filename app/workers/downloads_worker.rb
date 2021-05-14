@@ -23,14 +23,15 @@ class DownloadsWorker
 			song.update!(artist_ids: info[2])
 			push_to_active_storage(title, song)
 			if params["user"] != nil
-				song.update!(user_ids: [params["user"]])
+				playlist = User.find(params["user"]).playlists.find_or_create_by!(name: "tracks", admin_user: params["user"])
+				PlaylistsTrack.create!(song_id: song.id, playlist_id: playlist.id)
 			end
 		else
 			if params["user"] != nil
-				search.update!(user_ids: [params["user"]])
+				playlist = User.find(params["user"]).playlists.find_or_create_by!(name: "tracks", admin_user: params["user"])
+				PlaylistsTrack.create!(song_id: search.id, playlist_id: playlist.id)
 			end
 		end
-		Song.where(song_name: nil).destroy_all
   end
 
 	private

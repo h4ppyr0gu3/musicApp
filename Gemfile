@@ -31,6 +31,7 @@ gem 'activerecord-session_store'
 gem 'omniauth-rails_csrf_protection'
 gem 'omniauth'
 gem 'bulma-extensions-rails'
+gem 'taglib-ruby'
 
 
 group :development, :test do

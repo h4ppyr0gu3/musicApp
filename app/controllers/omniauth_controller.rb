@@ -6,8 +6,7 @@ class OmniauthController < Devise::OmniauthCallbacksController
     if @user.persisted?
       sign_in_and_redirect @user
     else
-      # session["devise.facebook_data"] = request.env["omniauth.auth"].except(:extra) # Removing extra as it can overflow some session stores
-      redirect_to new_user_registration_url
+      redirect_to root_path
     end
   end
 
@@ -21,8 +20,7 @@ class OmniauthController < Devise::OmniauthCallbacksController
     if @user.persisted?
       sign_in_and_redirect @user
     else
-      # session["devise.facebook_data"] = request.env["omniauth.auth"].except(:extra) # Removing extra as it can overflow some session stores
-      redirect_to new_user_registration_url
+      redirect_to root_path
     end
   end
 

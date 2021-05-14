@@ -2,7 +2,13 @@ class ProfileController < ApplicationController
 	before_action :set_user, only: %w[ update add info ]
 	
 	def index
-		@user = User.first
+		@user = current_user
+		if @user.image.representable?
+			@image = @user.image
+		else 
+			@image = 'https://picsum.photos/100/100'
+		end
+		@playlists = User.find(current_user.id).playlists.count
 	end
 
 	def add

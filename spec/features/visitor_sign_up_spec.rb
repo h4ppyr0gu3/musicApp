@@ -1,8 +1,13 @@
 require 'spec_helper'
 
 RSpec.describe 'visitor sign up', type: :feature do
+ before do
+    Rails.application.env_config["devise.mapping"] = Devise.mappings[:user] # If using Devise
+    Rails.application.env_config["omniauth.auth"] = OmniAuth.config.mock_auth[:google_oauth2]
+  end
 	it 'valid inputs' do
-    visit new_user_registration_path
+    visit root_path
+    click_link 'Sign up'
     fill_in 'user[email]', with: 'test@test.com'
     fill_in 'user[password]', with: 'password'
     fill_in 'user[password_confirmation]', with: 'password'
@@ -47,11 +52,28 @@ RSpec.describe 'visitor sign up', type: :feature do
     fill_in 'user[password_confirmation]', with: 'password'
     click_button 'Sign up'
     expect(page).to have_current_path(root_path)
+    expect(page).to have_css('.dropdown-trigger')
+    find('.dropdown-trigger').click
   	expect(page).to have_link('Your Tracks')
   	expect(page).to have_link('Log Out')
     click_link 'Log Out'
     expect(page).to have_current_path(root_path)
     expect(page).to have_link('Sign up')
   	expect(page).to have_link('Log in')
+  end
+
+  it 'Oauth' do
+    visit root_path 
+    expect(page).to have_link('Sign up')
+    expect(page).to have_link('Log in')
+    click_link 'Sign up'
+    find('.google').click
+    click_link 'musicApp'
+    expect(page).to have_current_path(root_path)
+    expect(page).to have_css('.dropdown-trigger')
+    find('.dropdown-trigger').click
+    expect(page).to have_link('Your Tracks')
+    expect(page).to have_link('Log Out')
+    click_link 'Log Out'
   end
 end

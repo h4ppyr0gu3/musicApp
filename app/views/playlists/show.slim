@@ -1,0 +1,8 @@
+.container
+	.root#root
+
+	- @songs.each do |s|
+		br
+		= s.song_name
+
+= javascript_pack_tag 'playlists/playlist_index'

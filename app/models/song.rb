@@ -5,10 +5,9 @@ class Song < ApplicationRecord
 	enum status: %i[ pending confirmed ]
 
 	has_one_attached :music_file
-	has_many :tracks
 	has_many :collabs
 	has_many :artists, through: :collabs
-	has_many :users, through: :tracks
+	has_many :playlists, through: :playlists_tracks
 
 	before_validation :checklist
 

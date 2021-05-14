@@ -1,45 +1,4 @@
-/ .container.p-5
-/ 	h1 here are all the songs
-
-
-	
-	
-/ 	- @all_tracks.each do |track|	
-/ 		.columns
-/ 			.column.is-size-6
-/ 				.box
-/ 					.columns
-/ 						.column.is-2
-/ 							img src="#{track.song&.album_art_url}"
-/ 						.column
-/ 							.columns
-/ 								.column
-/ 									= track.song&.yt_title
-/ 								.column
-/ 									= track.song&.song_name
-/ 							.columns
-/ 								- track.song&.artists.each do |a|
-/ 									.column.is-size-7
-/ 										=	a[:name]
-/ 							- if track.song&.music_file&.attached?
-/ 								.columns
-/ 									.column
-/ 										= audio_tag url_for(track.song.music_file), controls: true, preload: "none"
-/ 									.column.is-centered-middle
-/ 										= link_to "Download", url_for(track.song.music_file), class: "button m-2 is-size-7"
-/ 										= link_to "remove", track_path(track.id), method: :delete, class: "button m-2 is-size-7"
-/ 							- else 
-/ 								= link_to "sorry we have a bug please report it"
-/ 								= link_to "remove", track_path(track.id), method: :delete, class: "button is-size-7"
-
-				 
-				
-
-
-	= paginate @all_tracks
-
 .container
 	.something#root
-= javascript_pack_tag "tracks_index"
 							
 

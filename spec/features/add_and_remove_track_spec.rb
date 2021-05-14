@@ -3,7 +3,7 @@ require 'rails_helper'
 
 RSpec.describe 'song added and removed depending on path', type: :feature do
 	context 'Tracks' do 
-		it 'does something' do
+		it 'check youtube functionality' do
 			visit root_path
 			click_link 'Search Now!'
 	    expect(page).to have_current_path(search_results_path)
@@ -59,6 +59,7 @@ RSpec.describe 'song added and removed depending on path', type: :feature do
 	    fill_in 'user[password_confirmation]', with: 'password'
 	    click_button 'Sign up'
 	    expect(page).to have_current_path(root_path)
+	    find('.dropdown-trigger').click
 	    click_link "All songs"
 		end
 	end

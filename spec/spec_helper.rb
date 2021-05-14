@@ -13,6 +13,8 @@
 # it.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+require 'omniauth'
+
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
@@ -96,6 +98,14 @@ RSpec.configure do |config|
   config.order = :random
   Kernel.srand config.seed
 
+  OmniAuth.config.test_mode = true
+  OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new({
+    :provider => 'google_oauth2',
+    :uid => '42890409283408340',
+    :info =>
+    { :email => 'rogersdpdr@gmail.com' }
+  })
   
+
 
 end

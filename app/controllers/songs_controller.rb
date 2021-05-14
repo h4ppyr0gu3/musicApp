@@ -8,7 +8,7 @@ class SongsController < ApplicationController
 
 	def all_songs
 		@user = current_user.id
-		users_tracks = Song.joins(:tracks).where(tracks: { user_id: @user})
+		users_tracks = User.find(@user).playlists.find_by(name: 'tracks').songs
 		@all_songs = Song.all
 		@users_song_ids = []
 		users_tracks.each do |el|
@@ -27,7 +27,7 @@ class SongsController < ApplicationController
 			entry["name"] = s&.song_name
 			entry["artists"] = artists
 			entry["yt"] = s.yt_title
-			entry["src"] = url_for(s.music_file)
+			entry["src"] = url_for(s&.music_file)
 			entry["img"] = s.album_art_url
 			entry["status"] = s.status
 			entry["id"] = s.id
@@ -78,7 +78,58 @@ class SongsController < ApplicationController
 		song.update!(artist_ids: array)
 		response = {success: "created!"}
 		render json: response
-
-
 	end
+
+
+	def edit_again
+		song = Song.find(params[:id])
+		song.update!(status: :pending)
+	end
+
+	before_action :authenticate_user!
+
+	def tracks_index
+	end
+
+	def all_tracks
+		@user = current_user.id
+		users_tracks =  User.find(@user).playlists.where(name: 'tracks')[0].songs
+		items = []
+		users_tracks.each do |s|
+			if s.music_file.attached? 
+				array = []
+				s.artists.each do |a|
+					array.push(a.name)
+				end 
+				artists = array&.join(", ")
+				entry = {}
+				entry["name"] = s&.song_name
+				entry["artists"] = artists
+				entry["yt"] = s.yt_title
+				entry["src"] = url_for(s.music_file)
+				entry["img"] = s.album_art_url
+				entry["status"] = s.status
+				entry["id"] = s.id
+				items.push(entry)
+			end
+		end
+		response = {items: items}
+		render json: response
+	end
+
+	def create_tracks
+		user = current_user.id
+		track =  User.find(user).playlists.where(name: 'tracks')[0].id
+		PlaylistsTrack.find_or_create_by!(playlist_id: track, song_id: params[:id])
+		render json: {success: "added to tracks!"}
+	end
+
+	def destroy_tracks
+		user = current_user.id
+		track =  User.find(user).playlists.where(name: 'tracks')[0].id
+		PlaylistsTrack.where(playlist_id: track, song_id: params[:id])[0].delete
+		render json: {success: "removed from tracks!"}
+	end
+
+
 end
