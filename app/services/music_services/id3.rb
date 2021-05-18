@@ -34,7 +34,8 @@ module MusicServices
 					album_art[0], 
 					album_art[1]
 				)
-				header = ["ID3", 4, 0, 0, size].pack("A3CCCB32") + title + artists + album_art
+				size = header_size_syntax(size)
+				header = ["ID3", 4, 0, 0, size].pack("A3CCCB32").force_encoding(Encoding::UTF_8) + title + artists + album_art
 			end
 
 			# doc ref
