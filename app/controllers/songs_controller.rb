@@ -76,7 +76,7 @@ class SongsController < ApplicationController
 			array.push(collab.id)
 		end
 		song.update!(artist_ids: array)
-		MusicServices::Id3.execute!(params[:id])
+		AttributesWorker.perform_async(params[:id])
 		response = {success: "created!"}
 		render json: response
 	end

@@ -10,38 +10,31 @@ module MusicServices
 				
 				cat(
 					song, 
-					main(song), 
+					create_header(song), 
 					id
 				)
 			end
 
-			def main song
-				tags = []
+			def create_header song
+				size = 1024
 				title = text_tag("TIT2", song.song_name)
-				tags << title
-				
+				size = size + title.length
 				artists = song.artists.pluck(:name)
-
 				if artists.count > 1
 					artists = artists.join("/") 
 				else 
 					artists = artists[0]
 				end
-
-				artists = text_tag("TPE1", artists)				
-				tags << artists
-
-				header = ""
+				artists = text_tag("TPE1", artists)		
+				size = size + artists.length
+				
 				album_art = image_processing(song.album_art_url)
-
+				size = size + album_art[1] + 24
 				album_art = image_tag(
 					album_art[0], 
 					album_art[1]
 				)
-				tags << album_art
-				size = sum_header(tags)
-				header = ["ID3", 4, 0, 0, size].pack("A3CCCB32")
-				tag = header.force_encoding(Encoding::UTF_8) + tags.join 
+				header = ["ID3", 4, 0, 0, size].pack("A3CCCB32") + title + artists + album_art
 			end
 
 			# doc ref
@@ -51,13 +44,10 @@ module MusicServices
 					bin.seek(6)
 					header = bin.read(4)
 					header = find_header_size(bin)
-					
 					bin.seek(header)
 					mp3 = bin.read
 					spacer = [0].pack("C") * 1024
 					mp3 = header_tag + spacer.force_encoding(Encoding::UTF_8) + mp3.force_encoding(Encoding::UTF_8)
-					
-					# IO.binwrite(bin, mp3)
 				end
 
 				File.write(
@@ -74,17 +64,11 @@ module MusicServices
 				)
 			end
 
-			def sum_header tags # expects an array of all the tags produced
-				size = 1024
-				tags.each do |tag|
-					size = size + tag.length
-				end
-				
+			def header_size_syntax size # expects integer, returns packed binary
 				size = size.to_s(2)
 				for i in 1..(28 - size.length)
 					size = "0" + size
 				end
-				
 				size = size.split("")
 				size.insert(0, "0")
 				size.insert(8, "0")
@@ -163,8 +147,6 @@ module MusicServices
 					4, 
 					"B8B8B8B8"
 				).map{ |h| h.split("") }
-				
-				# wtf?
 				header_size.each{ |h| h.shift }.flatten.join.to_i(2) + 10
 			end
 
