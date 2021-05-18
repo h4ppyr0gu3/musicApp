@@ -52,7 +52,7 @@ class Search extends React.Component {
       console.log(element["snippet"]);
       console.log(element["snippet"]["thumbnails"]["medium"]["url"]);
       searchResults.push(<Results name={this.decodeHtml(element["snippet"]["title"])} videoUrl={element["id"]["videoId"]} 
-      key={element["id"]["videoId"]} thumbnailUrl={element["snippet"]["thumbnails"]["medium"]["url"]} />)
+      key={element["id"]["videoId"]} thumbnailUrl={element["snippet"]["thumbnails"]["high"]["url"]} />)
     })
 
    	return (

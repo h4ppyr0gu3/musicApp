@@ -31,7 +31,8 @@ gem 'activerecord-session_store'
 gem 'omniauth-rails_csrf_protection'
 gem 'omniauth'
 gem 'bulma-extensions-rails'
-gem 'taglib-ruby'
+gem 'mini_magick'
+gem "image_processing"
 
 
 group :development, :test do

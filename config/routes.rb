@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 	resources :searches, only: %i[search_results search_music]
 	resources :contact_emails, only: :create
 	resources :profile, only: %i[add index update settings]
-	resources :playlists#, only: %i[add_to_favourites create get_playlists, add_song, view]
+	# resources :playlists#, only: %i[add_to_favourites create get_playlists, add_song, view]
 
 	get 'music', to: 'react#show', constraints: { subdomain: 'music' }
 
@@ -38,10 +38,11 @@ Rails.application.routes.draw do
 	post 'attributes', to: 'songs#confirm'
 
 	get 'favourites', to: 'playlists#favourites'
-	get 'index', to: 'playlists#index', as: 'index'
+	get 'index', to: 'playlists#index', as: 'playlists'
 	post 'add_to_favourites', to: 'playlists#add_to_favourites'
 	get 'get_playlists', to: 'playlists#get_playlists'
 	post 'add_song', to: 'playlists#add_song'
-	get 'render/:id', to: 'playlists#render', as: 'render'
+	get 'playlist/:id', to: 'playlists#show', as: 'playlist'
+	post 'playlists', to: 'playlists#create'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
