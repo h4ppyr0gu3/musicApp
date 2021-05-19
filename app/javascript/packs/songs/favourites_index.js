@@ -16,7 +16,7 @@ class TracksIndex extends React.Component {
 
   componentDidMount() {
   	console.log("all mounted");
-    getData("/playlists/tracks_api").then(data => {console.log(data);
+    getData("/playlists/favourites_api").then(data => {console.log(data);
     	this.setState( {results: data})
   })
 }
