@@ -31,7 +31,7 @@ nav.navbar role="navigation" aria-label="main navigation"
               .dropdown-content
                 = link_to "Youtube Search", search_results_path, class: "dropdown-item"
                 = link_to "All songs", songs_path, class: "dropdown-item"
-                = link_to "Your Tracks", tracks_index_path, class: "dropdown-item", name: "Your Tracks"
+                = link_to "Your Tracks", playlists_tracks_path, class: "dropdown-item", name: "Your Tracks"
                 = link_to "Profile", profile_index_path, class: "dropdown-item"
                 .dropdown-divider
                 = link_to "Log Out", destroy_user_session_path, class: "dropdown-item", method: :delete, name: "Log Out"
@@ -45,7 +45,7 @@ nav.navbar role="navigation" aria-label="main navigation"
               .dropdown-content
                 = link_to "Youtube Search", search_results_path, class: "dropdown-item"
                 = link_to "All songs", songs_path, class: "dropdown-item"
-                = link_to "Your Tracks", tracks_index_path, class: "dropdown-item", name: "Your Tracks"
+                = link_to "Your Tracks", playlists_tracks_path, class: "dropdown-item", name: "Your Tracks"
                 = link_to "Profile", profile_index_path, class: "dropdown-item"
                 .dropdown-divider
                 = link_to "Log Out", destroy_user_session_path, class: "dropdown-item", method: :delete, name: "Log Out"

@@ -5,8 +5,7 @@
 			- @playlists.each do |p|
 				br
 				= p.name
-				- a = p.id
-				= link_to "#{p.name}", playlist_path(a)
+				
 		.column
 			.is-size-1 Create new Playlist
 			= form_with url: "/playlists", method: :post do |f|

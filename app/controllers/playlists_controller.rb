@@ -4,11 +4,6 @@ class PlaylistsController < ApplicationController
 		@playlists = User.find(current_user.id).playlists
 	end
 
-	def show
-		@songs = Playlist.find(params[:id]).songs
-		# render json: {response: "success"}
-	end
-
 	def create
 		playlist = params[:playlist]
 		playlist = User.find(current_user.id).playlists.create!(name: playlist, admin_user: current_user.id)
@@ -31,12 +26,55 @@ class PlaylistsController < ApplicationController
 		render json: response
 	end
 
-	def add_song
-		PlaylistsTrack.find_or_create_by!(playlist_id: params[:playlist_id], song_id: params[:song_id])
-		render json: {success: "created"}
+	def favourites
+		playlist = User.find(current_user.id).playlists.find_or_create_by!(name: "favourites", admin_user: current_user.id)
+		@songs = playlist.songs
 	end
 
-	def favourites
+	def tracks
+	end
+
+	def all_tracks
+		@user = current_user.id
+		users_tracks =  User.find(@user).playlists.where(name: 'tracks')[0].songs
+		items = []
+		users_tracks.each do |s|
+			if s.music_file.attached? 
+				array = []
+				s.artists.each do |a|
+					array.push(a.name)
+				end 
+				artists = array&.join(", ")
+				entry = {}
+				entry["name"] = s&.song_name
+				entry["artists"] = artists
+				entry["yt"] = s.yt_title
+				entry["src"] = url_for(s.music_file)
+				entry["img"] = s.album_art_url
+				entry["status"] = s.status
+				entry["id"] = s.id
+				items.push(entry)
+			end
+		end
+		response = {items: items}
+		render json: response
+	end
+
+	def create_tracks
+		user = current_user.id
+		track =  User.find(user).playlists.where(name: 'tracks')[0].id
+		PlaylistsTrack.find_or_create_by!(playlist_id: track, song_id: params[:id])
+		render json: {success: "added to tracks!"}
+	end
+
+	def destroy_tracks
+		user = current_user.id
+		track =  User.find(user).playlists.where(name: 'tracks')[0].id
+		PlaylistsTrack.where(playlist_id: track, song_id: params[:id])[0].delete
+		render json: {success: "removed from tracks!"}
+	end
+
+	def destroy
 	end
 
 
