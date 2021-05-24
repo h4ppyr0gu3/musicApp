@@ -32,7 +32,6 @@ gem 'omniauth-rails_csrf_protection'
 gem 'omniauth'
 gem 'bulma-extensions-rails'
 gem 'mini_magick'
-gem "image_processing"
 
 
 group :development, :test do

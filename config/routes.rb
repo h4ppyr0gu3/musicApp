@@ -37,33 +37,21 @@ Rails.application.routes.draw do
 	delete 'tracks/:id', to: 'songs#destroy_tracks'
 	post 'attributes', to: 'songs#confirm'
 
-<<<<<<< HEAD
-	get 'favourites', to: 'playlists#favourites'
-	get 'index', to: 'playlists#index', as: 'playlists'
-	post 'add_to_favourites', to: 'playlists#add_to_favourites'
-	get 'get_playlists', to: 'playlists#get_playlists'
-	post 'add_song', to: 'playlists#add_song'
-	get 'playlist/:id', to: 'playlists#show', as: 'playlist'
-	post 'playlists', to: 'playlists#create'
-=======
-	# get 'index', to: 'playlists#index'
-	# post 'add_to_favourites', to: 'playlists#add_to_favourites'
-	# get 'get_playlists', to: 'playlists#get_playlists'
-	# post 'add_song', to: 'playlists#add_song'
-	# get 'render/:id', to: 'playlists#render', as: 'render'
-	# get 'favourites', to: 'playlists#favourites'
->>>>>>> playlists
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-
   namespace :playlists do
   	resources :favourites
   	resources :playlists
   	resources :tracks
 
+  	post 'update_playlist', to: 'playlists#update'
+  	post 'update_favourites', to: 'favourites#update'
+  	post 'update_tracks', to: 'tracks#update'
+
   	get 'playlists_api', to: 'playlists#index_api'
+  	get 'show_api/:id', to: 'playlists#show_api'
   	get 'favourites_api', to: 'favourites#index_api'
   	get 'tracks_api', to: 'tracks#index_api'
-  	# get 'playlists', to: 'playlists#index'
+  	post 'add_song', to: 'playlists#add_song'
+  	# post 'add_song', to: 'playlists#add_song'
 
 
   end

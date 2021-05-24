@@ -1,5 +1,5 @@
 #doc ref id3 == https://id3.org/id3v2.3.0
-require "image_processing"
+require "mini_magick"
 
 module MusicServices
 	class Id3

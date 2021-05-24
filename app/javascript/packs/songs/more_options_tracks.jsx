@@ -46,7 +46,7 @@ class MoreOptionsTracks extends React.Component {
 	handleFavourites() {
 		var data = {id: this.props.id_no}
 		console.log(data);
-		postData('/add_to_favourites', data).then(data => {console.log(data), this.setState({favourites: true})})
+		postData('/playlists/update_favourites', data).then(data => {console.log(data), this.setState({favourites: true})})
 	}
 
 	handlePlaylists() {

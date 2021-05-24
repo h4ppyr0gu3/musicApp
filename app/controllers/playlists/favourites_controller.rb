@@ -27,6 +27,12 @@ class Playlists::FavouritesController < ApplicationController
 		render json: response
 	end
 
+ 	def update
+		playlist = User.find(current_user.id).playlists.find_or_create_by!(name: "favourites", admin_user: current_user.id)
+		PlaylistsTrack.find_or_create_by!(song_id: params[:id], playlist_id: playlist.id)
+		render json: {success: "created"}
+	end 
+
 	def destroy
 	end 
 end

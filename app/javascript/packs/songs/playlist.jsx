@@ -13,13 +13,13 @@ class Playlist extends React.Component {
 	}
 
 	componentDidMount() {
-		getData('/get_playlists').then(data =>{console.log(data), this.setState({response: data})})
+		getData('/playlists/playlists_api').then(data =>{console.log(data), this.setState({response: data})})
 	}
 
 	handleClick(playlist, e) {
 		var number = "number" + playlist;
 		var data = {playlist_id: playlist, song_id: this.props.id_no};
-		postData('/add_song', data).then(data => {console.log(data), this.setState({[number]: true})})
+		postData('/playlists/add_song', data).then(data => {console.log(data), this.setState({[number]: true})})
 	}
 
 	render() {
