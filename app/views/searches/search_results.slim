@@ -1,9 +1,10 @@
 .container
-
 	.is-size-2.has-text-centered Welcome to the musicApp!
-	.columns.my-3
-		.column.is-6 Search our Database for Songs and Artists
+	.columns.py-3
+		.column.is-6
+			.app#dbs
+		.column.is-6
+			.app#root
 
-			
-	.app#root
 = javascript_pack_tag 'search_results/homepage'
+= javascript_pack_tag 'search_results/database_search'

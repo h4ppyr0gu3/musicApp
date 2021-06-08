@@ -26,7 +26,7 @@ Rails.application.routes.draw do
 	
 	post 'search_music', to: 'searches#search_music'
 	get 'search_results', to: 'searches#search_results'
-	get 'ruby_search', to: 'searches#ruby_search'
+	get 'search_db', to: 'searches#search_db'
 	
 	post 'homepage_search', to: 'songs#homepage_search'
 	get 'all_songs', to: 'songs#all_songs'

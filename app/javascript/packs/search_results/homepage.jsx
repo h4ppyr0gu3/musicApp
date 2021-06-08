@@ -56,14 +56,14 @@ class Search extends React.Component {
     })
 
    	return (
-   		<div className="container">
+   		<div className="py-3">
 	  		<div className="columns is-mobile">
 	  			<div className="column">
 	  				<form onSubmit={this.onSubmit}>
 	            <div className="columns is-centered-middle">
 	            	<div className="field has-addons">
 	              	<div className="control">
-										<input /*onChange={this.handleChange}*/ type="text" id="query" name="query" placeholder="Search" className="input is-8" ></input>
+										<input /*onChange={this.handleChange}*/ type="text" id="query" name="query" placeholder="Search Youtube" className="input is-8" ></input>
 	            		</div>
 	            		<div className="control">
 	            			<input className="button is-centered-middle is-2 is-primary input" type="submit" value="Search"></input>
