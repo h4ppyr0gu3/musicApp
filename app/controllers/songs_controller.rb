@@ -7,7 +7,8 @@ class SongsController < ApplicationController
 
 	def all_songs
 		@user = current_user.id
-		users_tracks = User.find(@user).playlists.find_by(name: 'tracks').songs
+		users_tracks = current_user.playlists.find_or_create_by!(name: 'tracks')
+		users_tracks = users_tracks.songs
 		@all_songs = Song.all
 		@users_song_ids = []
 		users_tracks.each do |el|

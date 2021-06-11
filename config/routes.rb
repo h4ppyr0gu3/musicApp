@@ -52,7 +52,12 @@ Rails.application.routes.draw do
   	get 'tracks_api', to: 'tracks#index_api'
   	post 'add_song', to: 'playlists#add_song'
   	# post 'add_song', to: 'playlists#add_song'
+  end
 
+  namespace :friends do
+  	resources :friends
+  	resources :users
+  	resources :playlists
 
   end
 end

@@ -42,9 +42,20 @@ class Playlists::PlaylistsController < ApplicationController
         items.push(entry)
       end
     end
+    users = Playlist.find(params[:id]).users
+    array = []
+    
+    users.each do |user|
+      element = {}
+      element["first_name"] = user.first_name
+      element["last_name"] = user.last_name
+      element["email"] = user.email
+      array << element
+    end
     response = {
       items: items,
-      name: playlist_name
+      name: playlist_name,
+      users: array
     }
     render json: response
   end

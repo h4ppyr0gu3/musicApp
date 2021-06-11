@@ -1,0 +1,28 @@
+.container
+	.is-size-3 Users
+
+	= search_form_for @q, url: friends_users_path, method: :get do |f|
+		.field.has-addons
+					.control
+						= f.search_field :first_name_cont, class: "input", placeholder: "Find Users"
+					.control
+						= f.submit 'Search', class: "button is-primary"
+	.py-3
+	- @users.each do |r|
+		- if r.id != current_user.id
+			.box
+				.columns
+					/ .column
+						.icon.is-large
+							= image_tag r&.image
+					.column
+						= r.first_name
+					.column
+						=r.last_name
+					.column
+						= r.email
+					.column
+						= form_with url: friends_users_path do |f| 
+							= f.hidden_field :id
+							= hidden_field_tag 'id', r.id
+							= f.submit 'add friend', class: "button"

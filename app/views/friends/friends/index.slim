@@ -1,0 +1,37 @@
+.container
+	.columns
+		.column
+			.is-size-3 Friends
+			= search_form_for @q, url: friends_friends_path, method: :get do |f|
+				.field.has-addons
+					.control
+						= f.search_field :email_cont, placeholder: "Find Friends", class: "input"
+					.control
+						= f.submit 'Search', class: "button is-primary"
+
+			.py-3
+			- @users.each do |r|
+				.box
+					.columns
+						.column
+							= r.email
+							= r.first_name
+						.column
+							= form_with url: friends_friend_path(r.id), method: :delete do |f|
+								= f.hidden_field :id
+								= hidden_field_tag 'id', r.id
+								= f.submit 'remove friend', class: "button"
+
+		.column
+			.is-size-3 Friend requests
+
+			- @requests.each do |r|
+				= r.email
+				= form_with url: friends_friends_path, method: :post do |f|
+					= f.hidden_field :id
+					= hidden_field_tag 'id', r.id
+					= f.submit 'Accept friend', class: "button"
+				= form_with url: friends_user_path(r.id), method: :delete do |f|
+					= f.hidden_field :id
+					= hidden_field_tag 'id', r.id
+					= f.submit 'Delete request', class: "button"

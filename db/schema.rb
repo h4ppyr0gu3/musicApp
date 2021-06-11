@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_26_080342) do
+ActiveRecord::Schema.define(version: 2021_06_10_192533) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,10 +59,10 @@ ActiveRecord::Schema.define(version: 2021_05_26_080342) do
     t.index ["song_id"], name: "index_collabs_on_song_id"
   end
 
-  create_table "friends", force: :cascade do |t|
-    t.integer "requestor_id"
-    t.integer "recipient_id"
-    t.integer "confirmed", default: 0
+  create_table "friendships", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "friend_id"
+    t.integer "status", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

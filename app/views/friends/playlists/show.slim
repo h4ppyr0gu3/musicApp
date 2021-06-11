@@ -1,0 +1,20 @@
+.container
+	.is-size-3 Add Friends to Playlist
+	= search_form_for @q, url: friends_playlist_path, method: :get do |f|
+			.field.has-addons
+				.control
+					= f.search_field :email_cont, placeholder: "Find Friends", class: "input"
+				.control
+					= f.submit 'Search', class: "button is-primary"
+
+	.py-3
+	- @users.each do |r|
+		.box
+			.columns
+				.column
+					= r.email
+					= r.first_name
+				.column
+					= form_with url: friends_playlist_path, method: :PUT do |f|
+						= hidden_field_tag 'user', r.id
+						= f.submit 'Add Friend', class: "button"
