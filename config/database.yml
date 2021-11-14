@@ -8,6 +8,9 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: 5
+  host: <%= ENV['DB_HOST'] %>
+  username: <%= ENV['PG_USERNAME'] %>
+  password: <%= ENV['PG_PASSWORD'] %>
 
 development:
   <<: *default
@@ -20,6 +23,4 @@ test:
 production:
   <<: *default
   database: musicapp_production
-  # username: <%= ENV['LOCAL_USERNAME'] %>
-  # password: <%= ENV['LOCAL_PASSWORD'] %>
-  # host: <%= ENV['RDS_HOST'] %>
+  
