@@ -22,6 +22,7 @@
     "react-dom": "^17.0.2",
     "react_ujs": "^2.6.1",
     "turbolinks": "^5.2.0",
+    "webpacker": "^4.6.0",
     "ytdl": "^1.4.1"
   },
   "version": "0.1.0",

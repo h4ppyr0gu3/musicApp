@@ -323,7 +323,6 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     stringio (3.0.0)
-    taglib-ruby (1.1.0)
     temple (0.8.2)
     thor (1.1.0)
     tilt (2.0.10)
@@ -397,7 +396,6 @@ DEPENDENCIES
   simplecov
   slim
   spring
-  taglib-ruby
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 4.1.0)
@@ -408,4 +406,4 @@ RUBY VERSION
    ruby 3.0.0p0
 
 BUNDLED WITH
-   2.2.9
+   2.2.25

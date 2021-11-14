@@ -16,22 +16,24 @@ class SongsController < ApplicationController
 		end
 		items = []
 		@all_songs.each do |s|
-			entry = {}
-			array = []
-			artist = Artist.joins(:collabs).where(collabs: { song_id: s.id})
-			artist.each do |a|
-				array.push(a.name)
+			if s.music_file.attached?
+				entry = {}
+				array = []
+				artist = Artist.joins(:collabs).where(collabs: { song_id: s.id})
+				artist.each do |a|
+					array.push(a.name)
+				end
+				artists = array&.join(", ")
+				song = [s.yt_title, s.song_name, s.id]
+				entry["name"] = s&.song_name
+				entry["artists"] = artists
+				entry["yt"] = s.yt_title
+				entry["src"] = url_for(s&.music_file)
+				entry["img"] = s.album_art_url
+				entry["status"] = s.status
+				entry["id"] = s.id
+				items.push(entry)
 			end
-			artists = array&.join(", ")
-			song = [s.yt_title, s.song_name, s.id]
-			entry["name"] = s&.song_name
-			entry["artists"] = artists
-			entry["yt"] = s.yt_title
-			entry["src"] = url_for(s&.music_file)
-			entry["img"] = s.album_art_url
-			entry["status"] = s.status
-			entry["id"] = s.id
-			items.push(entry)
 		end
 		response = {items: items}
 		render json: response

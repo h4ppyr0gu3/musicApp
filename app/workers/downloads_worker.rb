@@ -4,7 +4,7 @@ class DownloadsWorker
 
   def perform params
   	method_name(params)
-  end
+  end 
   	
 	def method_name params
 		info = MusicServices::Attributes.execute!(params["title"])
@@ -14,8 +14,6 @@ class DownloadsWorker
 		if search == nil
 			videoUrl = params["video"]
 			title = MusicServices::DownloadVideo.execute!(videoUrl)
-			substitute = "-" + videoUrl
-			title = title.sub(substitute, "")
 			title = title.sub(".mp4", ".mp3")
 			title = title.sub(".webm", ".mp3")
 			title = title.gsub("\n", "")
