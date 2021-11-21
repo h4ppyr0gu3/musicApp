@@ -1,0 +1,7 @@
+verbose: false
+concurrency: <%= ENV['SIDEKIQ_THREADS'] { 2 } %>
+timeout: 30
+queues:
+  - [low_priority, 1]
+  - [default, 1]
+  - [high_priority, 2] # high priority
