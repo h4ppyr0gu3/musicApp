@@ -13,6 +13,12 @@ The main advantage is that the downloaded files are in mp3 format which allows y
 
 The first release of this webapp will only change the header tags and album art of the mp3 file and make it downloadable for the user
 
+## Dependencies
+
+- Ruby 3.0.0
+- node v12.22.7 
+- yarn 1.22.17
+
 ## Future Improvements:
 * Implementing Devise properly
 * Recording Users playlists and songs 
