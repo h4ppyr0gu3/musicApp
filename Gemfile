@@ -31,7 +31,7 @@ gem 'omniauth-rails_csrf_protection'
 gem 'omniauth'
 gem 'bulma-extensions-rails'
 gem 'mini_magick'
-
+gem 'doorkeeper'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

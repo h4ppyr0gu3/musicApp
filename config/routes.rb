@@ -2,6 +2,7 @@ require 'sidekiq/web'
 require 'sidekiq/cron/web'
 
 Rails.application.routes.draw do
+  use_doorkeeper
   mount Sidekiq::Web => "/sidekiq" # mount Sidekiq::Web in your Rails app
 
   devise_for :users, controllers: {omniauth_callbacks: 'omniauth'}
@@ -58,6 +59,12 @@ Rails.application.routes.draw do
   	resources :friends
   	resources :users
   	resources :playlists
+  end
 
+  	get 'stonks', to: 'stonks/static_pages#home'
+  namespace :stonks do
+  	resources :clients
+
+  	get 'about', to: 'static_pages#about' 
   end
 end
